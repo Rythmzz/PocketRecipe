@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/fragment_home_dest"
-        android:title="Khám Phá"
+        android:title="Home"
         android:icon="@drawable/ic_home"
         />
-    <item android:id="@+id/fragment_menu_dest"
-        android:title="Menu"
-        android:icon="@drawable/ic_menu"/>
+    <item android:id="@+id/fragment_my_favorite_recipe_dest"
+        android:title="Favorite"
+        android:icon="@drawable/ic_favorite_03"/>
     <item android:id="@+id/fragment_profile_dest"
-        android:title="Cá Nhân"
+        android:title="You"
         android:icon="@drawable/ic_profile"/>
 </menu>

@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.github.ybq.android.spinkit.SpinKitView
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_search"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.ChasingDots"
+            android:padding="5dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/main_color_03"
+            />
+
     <LinearLayout
         android:id="@+id/layout_header"
         android:gravity="center"
@@ -97,7 +114,7 @@
                 <TextView
                     android:drawablePadding="5dp"
                     android:textSize="20dp"
-                    android:drawableEnd="@drawable/ic_view"
+                    android:drawableEnd="@drawable/ic_view_01"
                     android:textColor="@color/black"
                     android:text="100"
                     android:layout_width="wrap_content"
@@ -171,7 +188,7 @@
                         <TextView
                             android:drawablePadding="5dp"
                             android:textSize="20dp"
-                            android:drawableEnd="@drawable/ic_view"
+                            android:drawableEnd="@drawable/ic_view_01"
                             android:textColor="@color/black"
                             android:text="100"
                             android:layout_width="wrap_content"
@@ -256,7 +273,7 @@
                         <TextView
                             android:drawablePadding="5dp"
                             android:textSize="20dp"
-                            android:drawableEnd="@drawable/ic_view"
+                            android:drawableEnd="@drawable/ic_view_01"
                             android:textColor="@color/black"
                             android:text="100"
                             android:layout_width="wrap_content"
@@ -304,192 +321,38 @@
 
     </LinearLayout>
 
+        <TextView
+            android:text="Search Result For Keyword"
+            app:layout_constraintTop_toBottomOf="@id/layout_header"
+            android:textColor="@color/main_color_03"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:id="@+id/tv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
 
 
-    <LinearLayout
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/layout_header"
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/tv_search"
         android:id="@+id/list_benefit_layout"
-        android:padding="15dp"
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:background="@drawable/shape_08"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <FrameLayout
-                android:layout_margin="10dp"
-                android:background="@drawable/shape_10"
-                android:layout_width="70dp"
-                android:layout_height="70dp">
-                <com.makeramen.roundedimageview.RoundedImageView
-                    app:riv_corner_radius="22dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_food_01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
 
-            </FrameLayout>
-            <LinearLayout
-                android:paddingLeft="15dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content">
-                   <TextView
-                       android:textStyle="bold"
-                       android:textSize="22dp"
-                       android:textColor="@color/black"
-                       android:text="Pasta Salad"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"/>
-                   <View
-                       android:layout_width="0dp"
-                       android:layout_height="0dp"
-                       android:layout_weight="1"/>
-                   <TextView
-                       android:drawablePadding="5dp"
-                       android:textSize="20dp"
-                       android:drawableEnd="@drawable/ic_view"
-                       android:textColor="@color/black"
-                       android:text="100"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"/>
+    </androidx.recyclerview.widget.RecyclerView>
 
-               </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.chip.Chip
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/main_color_03"
-                        android:text="🕒 25 Phút"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="0dp"
-                        />
-                    <com.google.android.material.chip.Chip
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/main_color_03"
-                        android:text="150 kcal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="0dp"
-                        />
-                    <com.google.android.material.chip.Chip
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/main_color_03"
-                        android:text="📝 11-12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
 
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:background="@drawable/shape_08"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <FrameLayout
-                android:layout_margin="10dp"
-                android:background="@drawable/shape_10"
-                android:layout_width="70dp"
-                android:layout_height="70dp">
-                <com.makeramen.roundedimageview.RoundedImageView
-                    app:riv_corner_radius="22dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_food_01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </FrameLayout>
-            <LinearLayout
-                android:paddingLeft="15dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textStyle="bold"
-                        android:textSize="22dp"
-                        android:textColor="@color/black"
-                        android:text="Pasta Salad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:drawablePadding="5dp"
-                        android:textSize="20dp"
-                        android:drawableEnd="@drawable/ic_view"
-                        android:textColor="@color/black"
-                        android:text="100"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.google.android.material.chip.Chip
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/main_color_03"
-                        android:text="🕒 25 Phút"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="0dp"
-                        />
-                    <com.google.android.material.chip.Chip
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/main_color_03"
-                        android:text="150 kcal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="0dp"
-                        />
-                    <com.google.android.material.chip.Chip
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/main_color_03"
-                        android:text="📝 11-12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 
 
 
     <LinearLayout
+        android:id="@+id/result_not_found"
+        android:visibility="gone"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/layout_header"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -525,5 +388,6 @@
 
 
     </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

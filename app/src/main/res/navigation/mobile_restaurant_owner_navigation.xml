@@ -6,7 +6,7 @@
     app:startDestination="@id/fragment_restaurant_dest"
     >
     <fragment android:id="@+id/fragment_restaurant_dest"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentRestaurantPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRestaurantPage"
         tools:layout="@layout/fragment_restaurant_page">
 
 
@@ -23,7 +23,7 @@
 
 
     <fragment android:id="@+id/fragment_order_dest"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentManageOrderPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentManageOrderPage"
         tools:layout="@layout/fragment_manage_order_page">
         <action
             android:id="@+id/action_fragment_order_dest_to_fragment_order_search_dest"
@@ -31,7 +31,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_profile_dest"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentProfilePage"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentProfilePage"
         tools:layout="@layout/fragment_profile_page">
         <action
             android:id="@+id/action_fragment_profile_dest_to_fragment_profile_detail_dest"
@@ -39,7 +39,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_profile_detail_dest"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentProfileDetailPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentProfileDetailPage"
         tools:layout="@layout/fragment_profile_detail_page">
         <action
             android:id="@+id/action_fragment_profile_dest_to_fragment_profile_detail_dest"
@@ -48,7 +48,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_restaurant_detail_dest"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentRestaurantDetailPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRestaurantDetailPage"
         tools:layout="@layout/fragment_restaurant_detail_page">
         <action
             android:id="@+id/action_fragment_restaurant_dest_to_fragment_restaurant_detail_dest"
@@ -61,7 +61,7 @@
 
     <fragment android:id="@+id/fragment_update_restaurant_detail_dest"
         tools:layout="@layout/fragment_update_restaurant_detail_page"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentUpdateRestaurantDetailPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentUpdateRestaurantDetailPage">
         <action
             android:id="@+id/action_fragment_restaurant_detail_dest_to_fragment_update_restaurant_detail_dest"
             app:popUpTo="@id/fragment_restaurant_detail_dest" />
@@ -72,7 +72,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_add_food_detail_dest"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentAddFoodDetailPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentAddFoodDetailPage"
         tools:layout="@layout/fragment_add_food_detail_page">
         <action
             android:id="@+id/action_fragment_update_restaurant_detail_dest_to_fragment_add_food_detail_dest"
@@ -82,7 +82,7 @@
 
     <fragment android:id="@+id/fragment_add_restaurant_detail_dest"
         tools:layout="@layout/fragment_add_restaurant_detail_page"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentAddRestaurantDetailPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentAddRestaurantDetailPage">
         <action
             android:id="@+id/action_fragment_restaurant_dest_to_fragment_add_restaurant_detail_dest"
             app:popUpTo="@id/fragment_restaurant_dest"/>
@@ -91,7 +91,7 @@
 
     <fragment android:id="@+id/fragment_restaurant_search_dest"
         tools:layout="@layout/fragment_restaurant_search_page"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentRestaurantSearchPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRestaurantSearchPage">
         <action
             android:id="@+id/action_fragment_restaurant_dest_to_fragment_restaurant_search_dest"
             app:popUpTo="@id/fragment_restaurant_dest" />
@@ -99,7 +99,7 @@
 
     <fragment android:id="@+id/fragment_order_search_dest"
         tools:layout="@layout/fragment_order_search_page"
-        android:name="com.oqq.orderqquickly.view.fragment.FragmentOrderSearchPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentOrderSearchPage">
         <action
             android:id="@+id/action_fragment_order_dest_to_fragment_order_search_dest"
             app:popUpTo="@id/fragment_order_dest" />

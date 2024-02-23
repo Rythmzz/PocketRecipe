@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.oqq.orderqquickly'
+    namespace 'com.oqq.pocketrecipe'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.oqq.orderqquickly"
+        applicationId "com.oqq.pocketrecipe"
         minSdk 24
         targetSdk 34
         versionCode 1

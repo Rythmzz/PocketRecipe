@@ -18,10 +18,10 @@
             android:id="@+id/title"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:padding="15dp"
             android:text="Thêm công thức cho chính mình ngay bây giờ"
-            android:layout_width="230dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_interact"

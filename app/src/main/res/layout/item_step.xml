@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/shape_15"
+    android:padding="20dp"
+    >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/step"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/main_color_01"
+            android:text="Bước 1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/delete"
+            android:src="@drawable/ic_delete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+    <TextView
+
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Tên bước (name)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+    <TextView
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:id="@+id/step_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+    <TextView
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Mô tả bước (description)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="15dp"/>
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/step_description"
+        android:drawablePadding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+</LinearLayout>

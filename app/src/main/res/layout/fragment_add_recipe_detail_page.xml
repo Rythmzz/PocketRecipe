@@ -9,15 +9,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:padding="15dp"
+    <FrameLayout
         android:id="@+id/layout_header"
-        android:background="@drawable/img_10"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="280dp">
+        <ImageView
+            android:id="@+id/image_recipe"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
         <LinearLayout
+            android:padding="15dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -34,21 +39,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
-           <LinearLayout
-               android:orientation="vertical"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
-               <View
-                   android:layout_width="0dp"
-                   android:layout_height="0dp"
-                   android:layout_weight="1"/>
-
-               <ImageView
-                   android:tint="@color/main_color_03"
-                   android:src="@drawable/ic_add_photo"
-                   android:layout_width="80dp"
-                   android:layout_height="80dp"/>
-           </LinearLayout>
 
         </LinearLayout>
         <View
@@ -58,7 +48,7 @@
 
 
 
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:padding="15dp"
@@ -66,11 +56,36 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:layout_gravity="center"
+               android:textSize="16dp"
+               android:textStyle="bold"
+               android:textColor="@color/main_color_01"
+               android:text="Thêm ảnh (photo)"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="15dp"
+               />
+           <ImageView
+               android:id="@+id/add_photo"
+               android:clickable="true"
+               android:background="@drawable/ripper_effect"
+               android:src="@drawable/ic_add_img"
+               android:layout_width="48dp"
+               android:layout_height="48dp"/>
+       </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="15dp"/>
         <TextView
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/main_color_01"
-            android:text="Tên Món"
+            android:text="Tên món (name)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
@@ -79,7 +94,7 @@
         <EditText
             android:id="@+id/edit_name"
             android:drawablePadding="5dp"
-            android:hint="Tên món"
+            android:hint="Nhập ký tự"
             android:paddingLeft="15dp"
             android:background="@drawable/shape_03"
             android:layout_width="match_parent"
@@ -91,21 +106,22 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/main_color_01"
-            android:text="Giới Thiệu Ngắn Món Ăn"
+            android:text="Giới thiệu món ăn (brief)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
             android:layout_width="0dp"
             android:layout_height="15dp"/>
+
         <EditText
-            android:padding="15dp"
-            android:gravity="top"
             android:id="@+id/edit_about"
-            android:drawablePadding="5dp"
-            android:hint="Giới thiệu món ăn"
-            android:background="@drawable/shape_03"
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:background="@drawable/shape_03"
+            android:drawablePadding="5dp"
+            android:gravity="top"
+            android:hint="Nhập ký tự (nếu có)"
+            android:padding="15dp" />
 
         <View
             android:layout_width="0dp"
@@ -114,7 +130,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/main_color_01"
-            android:text="Chi Tiết Món Ăn"
+            android:text="Mô tả món ăn (description)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
@@ -125,7 +141,7 @@
             android:gravity="top"
             android:id="@+id/edit_description"
             android:drawablePadding="5dp"
-            android:hint="Chi tiết món ăn"
+            android:hint="Nhập ký tự (nếu có)"
             android:background="@drawable/shape_03"
             android:layout_width="match_parent"
             android:layout_height="100dp"/>
@@ -137,7 +153,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/main_color_01"
-            android:text="Thời gian nấu"
+            android:text="Thời gian nấu món ăn (duration)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
@@ -152,18 +168,9 @@
                 android:id="@+id/edit_time"
                 android:drawablePadding="5dp"
                 android:layout_weight="0.8"
-                android:hint="0"
+                android:hint="0 (phút)"
                 android:paddingLeft="15dp"
                 android:background="@drawable/shape_03"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"/>
-            <View
-
-                android:layout_width="5dp"
-                android:layout_height="0dp"/>
-            <Spinner
-                android:layout_weight="0.2"
-                android:backgroundTint="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"/>
 
@@ -175,7 +182,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/main_color_01"
-            android:text="Số Kcal"
+            android:text="Số kcal (calories)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
@@ -185,7 +192,7 @@
             android:inputType="number"
             android:id="@+id/edit_kcal"
             android:drawablePadding="5dp"
-            android:hint="0"
+            android:hint="0 (kcal)"
             android:paddingLeft="15dp"
             android:background="@drawable/shape_03"
             android:layout_width="match_parent"
@@ -197,7 +204,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/main_color_01"
-            android:text="Số Người Ăn"
+            android:text="Số người ăn (people)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <View
@@ -207,12 +214,31 @@
             android:inputType="number"
             android:id="@+id/edit_number"
             android:drawablePadding="5dp"
-            android:hint="0"
+            android:hint="0 (người)"
             android:paddingLeft="15dp"
             android:background="@drawable/shape_03"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="15dp"/>
+        <TextView
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/main_color_01"
+            android:text="Bữa ăn (meal)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="15dp"/>
+        <Spinner
+            android:background="@drawable/shape_03"
+            android:id="@+id/category_meal"
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="15dp"/>
@@ -234,19 +260,18 @@
         <View
             android:layout_width="0dp"
             android:layout_height="15dp"/>
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.chip.Chip
 
-                android:text="➕ Thêm nguyên liệu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/layout_list_ingredient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/add_ingredient"
+            android:text="➕ Thêm nguyên liệu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-        </com.google.android.material.chip.ChipGroup>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="15dp"/>
         <TextView
             android:textSize="32dp"
             android:textStyle="bold"
@@ -257,40 +282,45 @@
         <View
             android:layout_width="0dp"
             android:layout_height="15dp"/>
-        <TextView
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:textColor="@color/main_color_01"
-            android:text="Bước 1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="15dp"/>
-        <EditText
-            android:padding="15dp"
-            android:gravity="top"
-            android:id="@+id/edit_b1"
-            android:drawablePadding="5dp"
-            android:hint="Chi tiết"
-            android:background="@drawable/shape_03"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/layout_list_step"
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="15dp"/>
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.chip.Chip
-
+                android:id="@+id/chip_add_step"
                 android:text="➕ Thêm Bước"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="15dp"/>
+        <LinearLayout
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_gravity="right"
+                android:id="@+id/btn_yes"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:text="Xác nhận"
+                android:textColor="#5DBCD2"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
 
 
