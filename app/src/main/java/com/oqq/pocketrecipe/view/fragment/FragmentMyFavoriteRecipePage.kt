@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.oqq.pocketrecipe.R
 import com.oqq.pocketrecipe.adapter.RecipeFavoriteAdapter
 import com.oqq.pocketrecipe.data.local.AppPreferences
@@ -22,7 +26,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FragmentMyFavoriteRecipePage: Fragment() {
     private lateinit var binding:FragmentMyFavoriteRecipePageBinding
-    private lateinit var bottomNavigationView: BottomNavigationView
 
     private val loginViewModel:LoginViewModel by viewModel()
 
@@ -33,6 +36,16 @@ class FragmentMyFavoriteRecipePage: Fragment() {
     private var firstThread:Job? = null
 
     private val mSecurePreferences: AppPreferences by inject()
+
+    private val navOptions :NavOptions by inject()
+
+    private lateinit var bottomNavigationView: BottomNavigationView
+
+    private lateinit var badge: BadgeDrawable
+
+    private lateinit var bottomAppBar: BottomAppBar
+
+    private lateinit var floatingActionButton: FloatingActionButton
 
 
     override fun onCreateView(
@@ -52,7 +65,8 @@ class FragmentMyFavoriteRecipePage: Fragment() {
             this.launch {
                 loginViewModel.success.collect{
                     result -> if (result is Boolean && result){
-                        println("HELLO GUY: ${loginViewModel.detailUser.toString()}")
+                    badge.isVisible = true
+                    badge.number = loginViewModel.detailUser!!.recipes.size
                     listRecipeFavorite = loginViewModel.detailUser!!.recipes
                     adapter.refreshData(listRecipeFavorite.toMutableList())
                     binding.countRecipe.setText("${listRecipeFavorite.size} công thức khác nhau được lưu trữ")
@@ -70,8 +84,12 @@ class FragmentMyFavoriteRecipePage: Fragment() {
     }
 
     private fun setIntialData() {
-//        bottomNavigationView = activity!!.findViewById(R.id.bn_bottom)
-//        bottomNavigationView.visibility = View.GONE
+        bottomNavigationView = activity!!.findViewById(R.id.bn_bottom)
+
+        floatingActionButton = activity!!.findViewById(R.id.add_btn)
+        bottomAppBar = activity!!.findViewById(R.id.bottom_appbar)
+
+        badge =  bottomNavigationView.getOrCreateBadge(R.id.fragment_my_favorite_recipe_dest);
         adapter = RecipeFavoriteAdapter(listRecipeFavorite.toMutableList(),this,loginViewModel)
 
         binding.listFavoriteRecipe.adapter = adapter
@@ -87,13 +105,24 @@ class FragmentMyFavoriteRecipePage: Fragment() {
     }
 
     private fun setBahavior() {
-        binding.back.setOnClickListener {
-            findNavController().navigate(R.id.action_back_home,null)
+        binding.seeNow.setOnClickListener {
+            findNavController().navigate(R.id.action_fragment_my_favorite_recipe_dest_to_fragment_recipe_all_dest,null,navOptions)
         }
+
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-//        bottomNavigationView.visibility = View.VISIBLE
+    override fun onStop() {
+        super.onStop()
+
+        floatingActionButton.visibility = View.GONE
+        bottomAppBar.visibility = View.GONE
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        floatingActionButton.visibility = View.VISIBLE
+        bottomAppBar.visibility = View.VISIBLE
+
     }
 }

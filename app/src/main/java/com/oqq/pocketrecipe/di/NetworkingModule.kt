@@ -1,6 +1,7 @@
 package com.oqq.pocketrecipe.di
 
 import com.google.gson.GsonBuilder
+import com.oqq.pocketrecipe.R
 import com.oqq.pocketrecipe.data.remote.ApiService
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,7 +15,7 @@ val networkingModule = module {
 fun provideRetrofit():Retrofit{
     val gson = GsonBuilder().setLenient().create()
     return Retrofit.Builder()
-        .baseUrl("http://192.168.1.69:1337")
+        .baseUrl(MyApplication.url_local)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 }

@@ -61,6 +61,16 @@
         <action
             android:id="@+id/action_fragment_profile_dest_to_fragment_profile_detail_dest"
             app:destination="@id/fragment_profile_detail_dest" />
+        <action
+            android:id="@+id/action_fragment_profile_dest_to_fragment_info_dest"
+            app:destination="@id/fragment_info_dest" >
+            <argument android:name="title"
+                app:argType="string"
+                android:defaultValue=""/>
+            <argument android:name="description"
+                app:argType="string"
+                android:defaultValue=""/>
+        </action>
     </fragment>
     <fragment android:id="@+id/fragment_add_recipe_detail_dest"
         tools:layout="@layout/fragment_add_recipe_detail_page"
@@ -88,6 +98,9 @@
                 android:defaultValue="0"/>
 
         </action>
+        <action
+            android:id="@+id/action_fragment_my_favorite_recipe_dest_to_fragment_recipe_all_dest"
+            app:popUpTo="@id/fragment_my_favorite_recipe_dest" />
 
     </fragment>
 
@@ -163,6 +176,9 @@
         tools:layout="@layout/fragment_my_favorite_recipe_page">
         <action android:id="@+id/action_back_home"
             app:popUpTo="@id/fragment_home_dest"/>
+        <action
+            android:id="@+id/action_fragment_my_favorite_recipe_dest_to_fragment_recipe_all_dest"
+            app:destination="@id/fragment_recipe_all_dest" />
     </fragment>
 
     <fragment android:id="@+id/fragment_my_favorite_menu_dest"
@@ -179,6 +195,21 @@
         <action
             android:id="@+id/action_fragment_menu_restaurant_dest_to_fragment_food_detail_dest"
             app:popUpTo="@id/fragment_menu_restaurant_dest" />
+
+    </fragment>
+
+    <fragment android:id="@+id/fragment_info_dest"
+        android:name="com.oqq.pocketrecipe.view.fragment.FragmentInfoPage"
+        tools:layout="@layout/fragment_info_page">
+        <argument android:name="title"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument android:name="description"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_fragment_profile_dest_to_fragment_info_dest"
+            app:popUpTo="@id/fragment_profile_dest" />
 
     </fragment>
 

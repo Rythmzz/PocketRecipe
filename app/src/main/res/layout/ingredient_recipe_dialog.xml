@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
@@ -27,12 +27,13 @@
             android:layout_height="15dp"/>
 
         <EditText
-            android:textSize="15dp"
-            android:inputType="text"
+
             android:id="@+id/text_ingredient"
             android:hint="Nhập ký tự"
             android:paddingLeft="5dp"
             android:background="@drawable/shape_03"
+            android:textSize="15dp"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
@@ -40,25 +41,39 @@
             android:layout_width="0dp"
             android:layout_height="15dp"/>
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_yes"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:clickable="true"
-                android:text="Xác nhận"
-                android:textColor="#5DBCD2"
-                android:textStyle="bold" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_no"
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:clickable="true"
                 android:text="Hủy bỏ"
-                android:textColor="#5DBCD2"
+                android:textColor="@color/main_color_07"
                 android:textStyle="bold" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_yes"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:clickable="true"
+                android:text="Xác nhận"
+                android:textColor="@color/main_color_07"
+                android:textStyle="bold" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
 
         </LinearLayout>
     </LinearLayout>

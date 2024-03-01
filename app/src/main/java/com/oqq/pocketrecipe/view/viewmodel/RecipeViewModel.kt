@@ -31,6 +31,8 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
 
     var currentUrlImageRecipe:String = ""
 
+    var currentLike:Int = 0
+
     fun createRecipe(recipeRequest: RecipeRequest){
         viewModelScope.launch {
             _loading.emit(true)
@@ -51,7 +53,7 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
     fun uploadImageRecipe(image:MultipartBody.Part){
         viewModelScope.launch {
             _loading.emit(true)
-            when(val result = repository.uploadImageRecipe(image)){
+            when(val result = repository.uploadImage(image)){
                 is BaseResponse.Success -> {
                     val responseBody: String = result.data.string()
                     val jsonArray = JSONArray(responseBody)
@@ -110,6 +112,7 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
     }
 
 
+
     fun getListRecipeMeal(meal:String){
         viewModelScope.launch {
             _loading.emit(true)
@@ -133,6 +136,27 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
         }
     }
 
+    fun getSpecificRecipe(id:Int){
+        viewModelScope.launch {
+            _loading.emit(true)
+
+            when(val result = repository.getSpecificRecipe(id)){
+                is BaseResponse.Success -> {
+                    result.data.let {
+
+                        currentLike = it.data.attributes.userslike!!.data.size
+                    }
+                    _success2.emit(true)
+                    _loading.emit(false)
+                }
+                is BaseResponse.Error ->{
+                    _success2.emit((result.exception as ResponseError).msg)
+                    _loading.emit(false)
+                }
+                else -> {}
+            }
+        }
+    }
 
     fun getListRecipe(start:Int, limit:Int){
         viewModelScope.launch {
@@ -142,6 +166,8 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
                 is BaseResponse.Success -> {
                     result.data.let {
                         currentListRecipe = it
+
+                        println("CURRENTLIST:${currentListRecipe}")
                     }
                     _success.emit(true)
                     _loading.emit(false)

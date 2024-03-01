@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:id="@+id/recipe" android:title="Công thức nấu">
+    <item android:id="@+id/recipe" android:title="Công thức">
         <menu>
-            <item android:id="@+id/fragment_my_recipe_dest"
+            <item android:id="@+id/fragment_category_recipe_dest"
                 android:icon="@drawable/ic_recipe_02"
-                android:title="Công thức của tôi"
+                android:title="Danh Sách Thể Loại"
                 />
-            <item android:id="@+id/fragment_my_favorite_menu_dest"
-                android:icon="@drawable/ic_heart_01"
-                android:title="Công thức yêu thích"
+            <item android:id="@+id/fragment_add_recipe_detail_dest"
+                android:icon="@drawable/ic_recipe_02"
+                android:title="Thêm Công Thức Mới"
                 />
         </menu>
-
     </item>
 
-    <item android:id="@+id/menu" android:title="Menu">
+    <item android:id="@+id/profile" android:title="Cá nhân">
         <menu>
-            <item android:id="@+id/fragment_my_favorite_recipe_dest"
-                android:icon="@drawable/ic_heart_01"
-                android:title="Menu yêu thích"
-                />
-            <item android:id="@+id/scan_menu_dest"
-                android:icon="@drawable/ic_scan_qr"
-                android:title="Quét Menu"
+            <item android:id="@+id/fragment_profile_dest"
+                android:icon="@drawable/ic_user"
+                android:title="Thông Tin Của Tôi"
                 />
         </menu>
-
     </item>
 
-<item android:id="@+id/other" android:title="Khác">
+<item android:id="@+id/other" android:title="Tùy chọn">
 <menu>
-
     <item android:id="@+id/logout_dest"
         android:icon="@drawable/ic_logout"
         android:title="Đăng Xuất"
         />
 </menu>
-
 </item>
-
-
 </menu>

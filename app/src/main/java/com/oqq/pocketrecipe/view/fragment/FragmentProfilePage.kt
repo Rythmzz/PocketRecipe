@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.oqq.pocketrecipe.R
 import com.oqq.pocketrecipe.data.local.AppPreferences
 import com.oqq.pocketrecipe.data.model.client.UserInfo
@@ -25,6 +26,8 @@ class FragmentProfilePage: Fragment() , DialogResultListener {
 
     private val mSecurePreferences: AppPreferences by inject()
 
+    private lateinit var bottomNavigationView: BottomNavigationView
+
     private lateinit var currentUser:UserInfo
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +43,9 @@ class FragmentProfilePage: Fragment() , DialogResultListener {
     private fun setIntialData() {
         currentUser = mSecurePreferences.getUserInfo().user
 
+        bottomNavigationView = activity!!.findViewById(R.id.bn_bottom)
+        bottomNavigationView.visibility = View.GONE
+
         Glide.with(activity!!).load(getString(R.string.url_connect)+currentUser.imgAvatar).into(binding.imgAvatar)
         binding.name.setText(currentUser.firstName + " "+ currentUser.lastName)
         binding.secondName.setText("@${currentUser.username}")
@@ -50,6 +56,8 @@ class FragmentProfilePage: Fragment() , DialogResultListener {
             binding.layoutPhone.visibility = View.GONE
         }
 
+        if (currentUser.idMode == 0) binding.layoutModeAdmin.visibility = View.GONE
+
      
 
 
@@ -57,6 +65,9 @@ class FragmentProfilePage: Fragment() , DialogResultListener {
 
 
     private fun setBehavior() {
+        binding.back.setOnClickListener {
+            findNavController().popBackStack()
+        }
         binding.ivInfoProfile.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_profile_dest_to_fragment_profile_detail_dest,null,navOptions)
         }
@@ -64,6 +75,16 @@ class FragmentProfilePage: Fragment() , DialogResultListener {
         binding.switchMode.setOnClickListener{
             val customDialog = CustomDialog(activity!!,this,"Trở thành quyền quản trị viên","Bạn có chắc chắn muốn thay đổi sang quyền quản trị viên không?")
             customDialog.show()
+        }
+
+        binding.aboutMe.setOnClickListener {
+            val action = FragmentProfilePageDirections.actionFragmentProfileDestToFragmentInfoDest(getString(R.string.title_about_me),getString(R.string.about_me))
+            findNavController().navigate(action,navOptions)
+        }
+
+        binding.policy.setOnClickListener {
+            val action = FragmentProfilePageDirections.actionFragmentProfileDestToFragmentInfoDest(getString(R.string.title_policy),getString(R.string.policy))
+            findNavController().navigate(action,navOptions)
         }
     }
 
@@ -76,5 +97,10 @@ class FragmentProfilePage: Fragment() , DialogResultListener {
         else {
             binding.switchMode.isChecked = false
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        bottomNavigationView.visibility = View.VISIBLE
     }
 }

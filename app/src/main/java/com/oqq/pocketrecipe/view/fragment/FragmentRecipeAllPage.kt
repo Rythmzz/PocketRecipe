@@ -70,7 +70,7 @@ class FragmentRecipeAllPage: Fragment() {
 
     private fun setBehavior() {
         binding.back.setOnClickListener {
-            findNavController().navigate(R.id.action_fragment_home_dest_to_fragment_recipe_all_dest,null)
+            findNavController().popBackStack()
         }
 
         for (i in 0 until listLayout.size){

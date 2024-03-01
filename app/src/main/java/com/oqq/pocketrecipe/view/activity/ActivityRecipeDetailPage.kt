@@ -20,6 +20,8 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.oqq.pocketrecipe.data.model.recipe.Process
+import com.oqq.pocketrecipe.di.MyApplication
+import kotlinx.coroutines.flow.collect
 
 class ActivityRecipeDetailPage: AppCompatActivity() {
     private lateinit var binding: ActivityRecipeDetailPageBinding
@@ -35,6 +37,8 @@ class ActivityRecipeDetailPage: AppCompatActivity() {
     private var firstThread:Job? = null
 
     private val recipeViewModel:RecipeViewModel by viewModel()
+
+    private var countLike:Int = 0
 
 
     private var ingredient:String = ""
@@ -57,9 +61,29 @@ class ActivityRecipeDetailPage: AppCompatActivity() {
                         binding.favoriteRecipe.setImageResource(R.drawable.ic_heart_01)
                     }
                     else binding.favoriteRecipe.setImageResource(R.drawable.ic_heart_02)
+                    
+                    if (loginViewModel.detailUser!!.likes.contains(recipe)){
+                        binding.likeRecipe.setImageResource(R.drawable.ic_like_01)
+                    }
+                    else binding.likeRecipe.setImageResource(R.drawable.ic_like_02)
                 }
                     else {
                         println(result.toString())
+                }
+                }
+
+
+            }
+
+            this.launch {
+                recipeViewModel.success2.collect{
+                        result -> if (result is Boolean && result){
+                    countLike = recipeViewModel.currentLike
+                    binding.countLike.setText("${countLike}")
+                }
+                else {
+                    println(result.toString())
+
                 }
                 }
             }
@@ -83,10 +107,27 @@ class ActivityRecipeDetailPage: AppCompatActivity() {
 
             loginViewModel.updateUser(mSecurePreferences.getUserInfo().user.id,loginViewModel.detailUser!!)
         }
+        
+        binding.likeRecipe.setOnClickListener {
+            if (loginViewModel.detailUser!!.likes.contains(recipe)){
+                binding.favoriteRecipe.setImageResource(R.drawable.ic_like_01)
+                loginViewModel.detailUser!!.likes.remove(recipe)
+                binding.countLike.setText("${countLike-1}")
+            }
+            else {
+                binding.favoriteRecipe.setImageResource(R.drawable.ic_like_02)
+                loginViewModel.detailUser!!.likes.add(recipe)
+                binding.countLike.setText("${countLike+1}")
+            }
+
+            loginViewModel.updateUser(mSecurePreferences.getUserInfo().user.id,loginViewModel.detailUser!!)
+        }
 
 
 
-        Glide.with(this).load("${getString(R.string.url_connect)}${recipe.imgUrl}").into(binding.imgDetailFood)
+
+
+        Glide.with(this).load("${MyApplication.url_local}${recipe.imgUrl}").into(binding.imgDetailFood)
 
         binding.textNameDetailFood.setText("${recipe.name}")
         binding.textMealDetailFood.setText("${recipe.meal}")
@@ -124,9 +165,8 @@ class ActivityRecipeDetailPage: AppCompatActivity() {
         val recipeRequest = RecipeRequest(recipeCurrent)
         recipeViewModel.updateRecipe(recipe.id!!,recipeRequest)
 
+        recipeViewModel.getSpecificRecipe(recipe.id!!)
         loginViewModel.getUser(mSecurePreferences.getUserInfo().user.id)
-
-        println("RECIPE: ${recipe.toString()}")
 
         var processCount:Int = 1
         for (i in recipe.process!!){
@@ -152,6 +192,7 @@ class ActivityRecipeDetailPage: AppCompatActivity() {
         sequenceStep.setTitleTextAppearance(androidx.appcompat.R.style.TextAppearance_AppCompat_Title)
         sequenceStep.setSubtitle(process.description)
         sequenceStep.setTitle(process.title)
+
 
         binding.layoutListStep.addView(sequenceStep)
     }

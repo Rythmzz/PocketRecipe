@@ -10,6 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.oqq.pocketrecipe.R
 import com.oqq.pocketrecipe.adapter.RecipeRecommendAdapter
 import com.oqq.pocketrecipe.adapter.RecipeRecommendHealthyAdapter
@@ -60,6 +64,14 @@ class FragmentHomePage: Fragment() {
 
     private var currentListHealthyRecipe:MutableList<Recipe> = mutableListOf()
 
+    private lateinit var bottomNavigationView: BottomNavigationView
+
+    private lateinit var badge:BadgeDrawable
+
+    private lateinit var bottomAppBar: BottomAppBar
+
+    private lateinit var floatingActionButton: FloatingActionButton
+
 
     private var meals:MutableList<Meal> = mutableListOf(
         Meal(R.drawable.img_meal_kv,"Khai vị",null),
@@ -67,7 +79,6 @@ class FragmentHomePage: Fragment() {
                 Meal(R.drawable.img_meal_kem,"Ăn kèm",null),
                     Meal(R.drawable.img_meal_tm,"Tráng miệng",null),
                         Meal(R.drawable.img_meal_phu,"Phụ",null),
-                            Meal(R.drawable.img_meal_nhanh,"Nhanh",null),
                                 Meal(R.drawable.img_meal_dd,"Dinh dưỡng",null),
                                             Meal(R.drawable.img_meal_drink,"Đồ uống",null)
     )
@@ -78,12 +89,24 @@ class FragmentHomePage: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomePageBinding.inflate(inflater,container,false)
-        setIntialData()
-        setSlideImage()
-        setStatus()
-        setBehavior()
-        setFragment()
         return binding.root
+    }
+
+
+
+    override fun onStop() {
+        super.onStop()
+
+        floatingActionButton.visibility = View.GONE
+        bottomAppBar.visibility = View.GONE
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        floatingActionButton.visibility = View.VISIBLE
+        bottomAppBar.visibility = View.VISIBLE
+
     }
 
 
@@ -94,7 +117,10 @@ class FragmentHomePage: Fragment() {
                 loginViewModel.success.collect{
                     result -> if (result is Boolean && result){
                         userInfo = loginViewModel.detailUser!!
-                    println("USERINFO: ${userInfo.toString()}")
+                        badge.isVisible = true
+                        badge.number = userInfo.recipes.size
+
+
                     this.launch {
                         recipeViewModel.success.collect{result ->
                             if (result is Boolean && result){
@@ -111,7 +137,6 @@ class FragmentHomePage: Fragment() {
 
                                 for (i in meals){
                                     i.recipe = recipes.filter { it.attributes.meal.equals(i.name)}
-                                    println("THEM DUOC GI KHONG : ${i.recipe.toString()}")
                                 }
 
                                 recipes[0].attributes.id = recipes[0].id
@@ -150,6 +175,13 @@ class FragmentHomePage: Fragment() {
     private fun setIntialData() {
         keyboard = Keyboard(activity!!)
 
+        bottomNavigationView = activity!!.findViewById(R.id.bn_bottom)
+
+        floatingActionButton = activity!!.findViewById(R.id.add_btn)
+        bottomAppBar = activity!!.findViewById(R.id.bottom_appbar)
+
+        badge = bottomNavigationView.getOrCreateBadge(R.id.fragment_my_favorite_recipe_dest);
+
 
         listFeature = mutableListOf(
             FeatureSlide("Thêm và sáng tạo công thức của chính bạn",R.drawable.img_thumb_01),
@@ -175,8 +207,20 @@ class FragmentHomePage: Fragment() {
             loginViewModel.getUser(mSecurePreferences.getUserInfo().user.id)
         }
 
+
+
     }
 
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        setIntialData()
+        setSlideImage()
+        setStatus()
+        setBehavior()
+        setFragment()
+    }
     private fun setAdapter() {
         recommendRecipeAdapter = RecipeRecommendAdapter(currentListRecommendRecipe,this)
 
@@ -203,22 +247,14 @@ class FragmentHomePage: Fragment() {
 
     }
 
-    private fun forwardDetailRecipe(recipeDetail:AttributesRecipe){
-        val intent: Intent = Intent(context, ActivityRecipeDetailPage::class.java)
-        intent.putExtra("DETAIL_RECIPE",recipeDetail)
-        startActivity(intent)
-    }
-
     private fun setBehavior() {
         binding.editSearch.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_home_dest_to_fragment_recipe_search_dest,null,navOptions)
         }
 
-
-//
-//        binding.btnLogin.setOnClickListener {
-//            findNavController().navigate(R.id.action_fragment_home_dest_to_fragment_add_recipe_detail_dest,null)
-//        }
+        floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_fragment_home_dest_to_fragment_add_recipe_detail_dest,null,navOptions)
+        }
 
         binding.textSeeAll01.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_home_dest_to_fragment_recipe_all_dest,null,navOptions)
@@ -229,9 +265,6 @@ class FragmentHomePage: Fragment() {
             // món có lợi cho sức khỏe
         }
 
-//        binding.btnStartCook.setOnClickListener {
-//            findNavController().navigate(R.id.action_fragment_home_dest_to_fragment_detail_recipe_dest,null,navOptions)
-//        }
 
     }
 }

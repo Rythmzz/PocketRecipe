@@ -1,6 +1,8 @@
 package com.oqq.pocketrecipe.repo
 
 import com.oqq.pocketrecipe.data.model.client.*
+import com.oqq.pocketrecipe.data.model.recipe.Recipe
+import com.oqq.pocketrecipe.data.model.recipe.RecipeInfo
 import com.oqq.pocketrecipe.data.model.recipe.RecipeRequest
 import com.oqq.pocketrecipe.data.model.recipe.RecipeResponse
 import com.oqq.pocketrecipe.data.remote.ApiService
@@ -17,9 +19,9 @@ class Repository(private val api:ApiService) {
             return BaseResponse.Error(ResponseError(101,ex.message.toString()))
         }
     }
-    suspend fun uploadImageRecipe(image:MultipartBody.Part) : BaseResponse<ResponseBody>{
+    suspend fun uploadImage(image:MultipartBody.Part) : BaseResponse<ResponseBody>{
         return try{
-            BaseResponse.Success(api.uploadImageRecipe(image))
+            BaseResponse.Success(api.uploadImage(image))
         }
         catch (ex:Exception){
             return BaseResponse.Error(ResponseError(101,ex.message.toString()))
@@ -63,6 +65,15 @@ class Repository(private val api:ApiService) {
     suspend fun getListRecipeMeal(meal:String):BaseResponse<RecipeResponse>{
         return try{
             BaseResponse.Success(api.getListRecipeMeal(meal))
+        }
+        catch (ex:Exception){
+            return BaseResponse.Error(ResponseError(101,ex.message.toString()))
+        }
+    }
+
+    suspend fun getSpecificRecipe(id:Int):BaseResponse<RecipeInfo>{
+        return try{
+            BaseResponse.Success(api.getSpecificRecipe(id))
         }
         catch (ex:Exception){
             return BaseResponse.Error(ResponseError(101,ex.message.toString()))

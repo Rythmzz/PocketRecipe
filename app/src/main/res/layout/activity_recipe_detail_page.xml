@@ -33,8 +33,7 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:background="@drawable/ripper_effect"
-                android:tint="@color/black"
-                android:src="@drawable/ic_back"
+                android:src="@drawable/ic_back_01"
                 android:layout_width="32dp"
                 android:layout_height="32dp"/>
             <View
@@ -81,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
-
+                    android:layout_gravity="bottom"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     android:textColor="@color/main_color_03"
@@ -89,12 +88,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
+                    android:layout_gravity="bottom"
                     android:id="@+id/text_meal_detail_food"
                     android:textSize="15dp"
                     android:textColor="@color/white"
                     android:text="Ăn kèm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/count_like"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="bottom"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/white"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:background="@drawable/ripper_effect"
+                    android:tint="@color/main_color_01"
+                    android:id="@+id/like_recipe"
+                    android:textSize="15dp"
+                    android:src="@drawable/ic_like_02"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"/>
             </LinearLayout>
         </LinearLayout>
         <View
@@ -230,7 +254,7 @@
         <com.transferwise.sequencelayout.SequenceLayout
             android:id="@+id/layout_list_step"
             android:padding="5dp"
-            android:background="@color/white"
+            android:background="@drawable/shape_18"
             app:progressBackgroundColor="@color/main_color_01"
             app:progressForegroundColor="@color/black"
             android:layout_width="match_parent"

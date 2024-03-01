@@ -2,7 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+
+
     <LinearLayout
         android:background="@color/main_color_07"
         android:padding="10dp"
@@ -29,24 +32,24 @@
         android:id="@+id/text_title"
         android:textSize="25dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Categories"
+        android:text="Giới thiệu về tôi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_category_recipe"
-        android:layout_margin="15dp"
-        android:gravity="center"
-        android:orientation="vertical"
+
+    <TextView
+        android:textSize="16dp"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:text="@string/about_me"
+        android:id="@+id/text_description"
         app:layout_constraintTop_toBottomOf="@id/text_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-
-    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

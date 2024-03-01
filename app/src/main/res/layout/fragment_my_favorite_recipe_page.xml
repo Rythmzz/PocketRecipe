@@ -20,14 +20,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageView
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:background="@drawable/ripper_effect"
-                android:id="@+id/back"
-                android:src="@drawable/ic_back"
-                android:layout_width="32dp"
-                android:layout_height="32dp"/>
+
 
 
         </LinearLayout>
@@ -106,6 +99,7 @@
             android:layout_weight="0.5"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/see_now"
             android:text="Xem ngay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -15,5 +15,6 @@
     <color name="main_color_04">#F6B100</color>
     <color name="main_color_05">#AAFF00</color>
     <color name="loading_color">#CF000000</color>
+    <color name="main_color_07">#E27D19</color>
 
 </resources>

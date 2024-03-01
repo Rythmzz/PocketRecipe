@@ -9,6 +9,7 @@ class MyApplication: Application() {
 
     companion object{
         const val PICK_IMAGE = 1
+        const val url_local = "http://192.168.158.1:1337/"
     }
     override fun onCreate() {
         super.onCreate()

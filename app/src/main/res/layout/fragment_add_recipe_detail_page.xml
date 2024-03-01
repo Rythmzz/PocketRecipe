@@ -31,8 +31,7 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:background="@drawable/ripper_effect"
-                android:tint="@color/black"
-                android:src="@drawable/ic_back"
+                android:src="@drawable/ic_back_01"
                 android:layout_width="32dp"
                 android:layout_height="32dp"/>
             <View
@@ -317,7 +316,7 @@
                 android:layout_height="50dp"
                 android:clickable="true"
                 android:text="Xác nhận"
-                android:textColor="#5DBCD2"
+                android:textColor="@color/main_color_07"
                 android:textStyle="bold" />
 
         </LinearLayout>

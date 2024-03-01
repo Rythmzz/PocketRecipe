@@ -18,13 +18,18 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <ImageView
+        <TextView
+            android:padding="15dp"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="App Công Thức Bỏ Túi Dễ Sử Dụng Và Tiện Lợi"
             app:layout_constraintVertical_bias="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_header"
-            android:src="@drawable/img_font_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -88,7 +88,7 @@ class FragmentAddRecipeDetailPage: Fragment(), DialogResultStepListener, DialogR
                         binding.editAbout.text.toString(),binding.editDescription.text.toString(),
                         (binding.editTime.text.toString()).toInt(),(binding.editKcal.text.toString()).toInt(),
                         (binding.editNumber.text.toString()).toInt(),0,currentCategory,recipeViewModel.currentUrlImageRecipe,
-                    currentListIngredient,currentListProcess)
+                    currentListIngredient,currentListProcess,null)
                     val recipeRequest = RecipeRequest(attrtibuteRecipe)
                     recipeViewModel.createRecipe(recipeRequest)
 
@@ -198,7 +198,7 @@ class FragmentAddRecipeDetailPage: Fragment(), DialogResultStepListener, DialogR
             )
             val image = MultipartBody.Part.createFormData("files", "image.jpg", requestFile)
             currentImage = image
-//            recipeViewModel.uploadImageRecipe(currentImage)
+
         }
     }
 
