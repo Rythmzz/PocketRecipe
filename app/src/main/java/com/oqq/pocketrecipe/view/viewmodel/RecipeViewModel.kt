@@ -59,7 +59,7 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
                     val jsonArray = JSONArray(responseBody)
                     val jsonObject = jsonArray.getJSONObject(0)
                     currentUrlImageRecipe = (jsonObject.getString("url")).substring(1)
-                    println("URL IMAGE: ${currentUrlImageRecipe}")
+                    println("URL IMAGE: $currentUrlImageRecipe")
                     _success.emit(true)
                 }
                 is BaseResponse.Error -> {
@@ -121,8 +121,8 @@ class RecipeViewModel(private val repository: Repository) :ViewModel(){
                 is BaseResponse.Success -> {
                     result.data.let {
                         currentListRecipe = it
-                        if (meal.equals("Chính")) countMainRecipe = it.data.size
-                        else if (meal.equals("Phụ")) countSubRecipe = it.data.size
+                        if (meal == "Chính") countMainRecipe = it.data.size
+                        else if (meal == "Phụ") countSubRecipe = it.data.size
                     }
                     _success.emit(true)
                     _loading.emit(false)

@@ -27,14 +27,14 @@
             android:layout_height="15dp"/>
 
         <EditText
-
+            android:layout_gravity="center"
             android:id="@+id/text_ingredient"
             android:hint="Nhập ký tự"
             android:paddingLeft="5dp"
             android:background="@drawable/shape_03"
             android:textSize="15dp"
             android:inputType="text"
-            android:layout_width="match_parent"
+            android:layout_width="330dp"
             android:layout_height="40dp"/>
 
         <View

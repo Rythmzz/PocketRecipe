@@ -12,9 +12,9 @@ import com.oqq.pocketrecipe.data.local.AppPreferences
 import com.oqq.pocketrecipe.databinding.ActivityAboutPageBinding
 import com.oqq.pocketrecipe.listener.DialogResultListener
 import com.oqq.pocketrecipe.view.dialog.CustomDialog
-import com.oqq.pocketrecipe.view.fragment.FragmentAbout01
-import com.oqq.pocketrecipe.view.fragment.FragmentAbout02
-import com.oqq.pocketrecipe.view.fragment.FragmentAbout03
+import com.oqq.pocketrecipe.view.fragment.main.FragmentAbout01
+import com.oqq.pocketrecipe.view.fragment.main.FragmentAbout02
+import com.oqq.pocketrecipe.view.fragment.main.FragmentAbout03
 import org.koin.android.ext.android.inject
 
 class ActivityAboutPage: AppCompatActivity(), DialogResultListener {
@@ -49,15 +49,13 @@ class ActivityAboutPage: AppCompatActivity(), DialogResultListener {
             binding.viewPager.setCurrentItem(binding.viewPager.currentItem - 1,true)
         }
     }
-
     private fun nextHomePage(){
         mSecurePreferences.setFirstTheme(false)
-        val intent: Intent = Intent(this,ActivityMainPage::class.java)
+        val intent = Intent(this,ActivityMainPage::class.java)
         startActivity(intent)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         finish()
     }
-
     private fun setBehavior() {
         binding.next.setOnClickListener {
             if (binding.viewPager.currentItem == fragments.size -1){
@@ -91,7 +89,7 @@ class ActivityAboutPage: AppCompatActivity(), DialogResultListener {
 
     private fun setFragment() {
         fragments = arrayListOf(
-            FragmentAbout01(),FragmentAbout02(), FragmentAbout03()
+            FragmentAbout01(), FragmentAbout02(), FragmentAbout03()
         )
     }
 
@@ -104,7 +102,6 @@ class ActivityAboutPage: AppCompatActivity(), DialogResultListener {
         if (result){
             nextHomePage()
         }
-        else {
-        }
+
     }
 }

@@ -1,5 +1,6 @@
 package com.oqq.pocketrecipe.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,8 +11,9 @@ class IngredientRecipeAdapter(var listIngredient:MutableList<String>) : Recycler
     
 
     inner class IngredientViewHolder(private val binding:ItemIngredientChipBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item:String,position: Int){
-            binding.ingredient.setText(item)
+        @SuppressLint("NotifyDataSetChanged")
+        fun bind(item:String, position: Int){
+            binding.ingredient.text = item
 
             binding.delete.setOnClickListener {
                 listIngredient.removeAt(position)

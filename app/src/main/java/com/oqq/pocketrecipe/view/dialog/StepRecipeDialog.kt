@@ -1,5 +1,6 @@
 package com.oqq.pocketrecipe.view.dialog
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
@@ -23,8 +24,9 @@ class StepRecipeDialog(context:Context, private val dialogResultStepListener: Di
         setBehavior()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setIntialData() {
-        binding.step.setText("Bước ${position+1}")
+        binding.step.text = "Bước ${position+1}"
     }
 
     private fun setBehavior() {

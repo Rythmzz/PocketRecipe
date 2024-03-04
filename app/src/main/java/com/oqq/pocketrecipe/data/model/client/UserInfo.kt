@@ -18,5 +18,4 @@ data class UserInfo( val id: Int,
                      var address:String,
                      var gender:Int,
                      var recipes: ArrayList<AttributesRecipe>,
-                    var likes:ArrayList<AttributesRecipe>) {
-}
+                    var likes:ArrayList<AttributesRecipe>)

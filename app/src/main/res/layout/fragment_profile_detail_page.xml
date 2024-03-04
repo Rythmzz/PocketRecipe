@@ -52,6 +52,7 @@
         android:layout_height="wrap_content">
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image_avatar"
+            android:scaleType="centerCrop"
             app:riv_border_color="@color/white"
             app:riv_border_width="2dp"
             app:riv_corner_radius="64dp"
@@ -218,7 +219,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/shape_03"
-            android:hint="(+84) 036 530 4510"
+            android:hint="(+84) Số điện thoại"
             android:paddingLeft="15dp" />
         <TextView
             android:drawablePadding="5dp"
@@ -241,7 +242,7 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:background="@drawable/shape_03"
-            android:hint="98 Man Thiện, Phường Hiệp Phú, TP Thủ Đức"
+            android:hint="Địa chỉ nhà"
             android:paddingLeft="15dp" />
 
     </LinearLayout>

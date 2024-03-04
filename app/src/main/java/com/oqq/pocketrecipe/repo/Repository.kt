@@ -1,7 +1,6 @@
 package com.oqq.pocketrecipe.repo
 
 import com.oqq.pocketrecipe.data.model.client.*
-import com.oqq.pocketrecipe.data.model.recipe.Recipe
 import com.oqq.pocketrecipe.data.model.recipe.RecipeInfo
 import com.oqq.pocketrecipe.data.model.recipe.RecipeRequest
 import com.oqq.pocketrecipe.data.model.recipe.RecipeResponse
@@ -19,6 +18,7 @@ class Repository(private val api:ApiService) {
             return BaseResponse.Error(ResponseError(101,ex.message.toString()))
         }
     }
+
     suspend fun uploadImage(image:MultipartBody.Part) : BaseResponse<ResponseBody>{
         return try{
             BaseResponse.Success(api.uploadImage(image))
@@ -27,6 +27,7 @@ class Repository(private val api:ApiService) {
             return BaseResponse.Error(ResponseError(101,ex.message.toString()))
         }
     }
+
     suspend fun updateRecipe(id:Int, recipeRequest: RecipeRequest) : BaseResponse<RecipeRequest>{
         return try{
             BaseResponse.Success(api.updateRecipe(id,recipeRequest))
@@ -44,6 +45,7 @@ class Repository(private val api:ApiService) {
             return BaseResponse.Error(ResponseError(101,ex.message.toString()))
         }
     }
+
     suspend fun getInfoUser(id:Int) : BaseResponse<UserInfo>{
         return try{
             BaseResponse.Success(api.getInfoUser(id))
@@ -100,17 +102,15 @@ class Repository(private val api:ApiService) {
 
     suspend fun register(userData: UserData) : BaseResponse<Any> {
 
-        try {
+        return try {
             val response = api.createAccount(userData)
             if (response.isSuccessful){
-                return BaseResponse.Success<UserData>(userData)
+                BaseResponse.Success(userData)
+            } else {
+                BaseResponse.Error(ResponseError(101,response.message().toString()))
             }
-            else {
-                return BaseResponse.Error(ResponseError(101,response.message().toString()))
-            }
-        }
-        catch (ex:Exception){
-            return BaseResponse.Error(ResponseError(101,ex.message.toString()))
+        } catch (ex:Exception){
+            BaseResponse.Error(ResponseError(101,ex.message.toString()))
         }
     }
 

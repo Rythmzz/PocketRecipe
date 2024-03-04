@@ -10,7 +10,6 @@ class AppPreferences(private val securePreferences: SecurePreferences) {
         const val TOKEN = "USER_TOKEN"
         const val USER_INFO = "USER_INFO"
         const val FIRST_THEME = "FIRST_THEME"
-        const val REMEMBER_ME = "USER_REMEMBER_ME"
     }
 
 

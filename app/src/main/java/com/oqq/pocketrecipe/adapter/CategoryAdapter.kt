@@ -8,13 +8,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.oqq.pocketrecipe.data.model.recipe.Category
 import com.oqq.pocketrecipe.databinding.ItemCategoryRecipeBinding
-import com.oqq.pocketrecipe.view.fragment.FragmentCategoryRecipePageDirections
+import com.oqq.pocketrecipe.view.fragment.main.FragmentCategoryRecipePageDirections
 
-class CategoryAdapter(val listCategory:List<Category>, val fragment:Fragment, val navOptions: NavOptions) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(private val listCategory:List<Category>, val fragment:Fragment, val navOptions: NavOptions) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(private val binding:ItemCategoryRecipeBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item:Category,position:Int){
-            binding.title.setText(item.title)
+            binding.title.text = item.title
             binding.image.setImageResource(item.image)
 
             binding.layoutCategory.setOnClickListener {

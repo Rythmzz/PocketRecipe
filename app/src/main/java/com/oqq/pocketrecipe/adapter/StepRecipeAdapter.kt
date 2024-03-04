@@ -17,10 +17,11 @@ class StepRecipeAdapter(var listProcess:MutableList<Process>) : RecyclerView.Ada
     }
 
     inner class StepViewHolder(private val binding:ItemStepBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
         fun bind(item:Process, position: Int){
-            binding.step.setText("Bước ${position+1}")
-            binding.stepName.setText(item.title)
-            binding.stepDescription.setText(item.description)
+            binding.step.text = "Bước ${position+1}"
+            binding.stepName.text = item.title
+            binding.stepDescription.text = item.description
             if (position == listProcess.size-1){
                 binding.delete.visibility = View.VISIBLE
             }

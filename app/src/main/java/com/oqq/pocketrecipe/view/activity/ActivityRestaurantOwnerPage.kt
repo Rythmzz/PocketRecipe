@@ -16,13 +16,9 @@ class ActivityRestaurantOwnerPage: AppCompatActivity() {
         binding = ActivityRestaurantOwnerPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            window.statusBarColor = Color.parseColor("#000000")
-//        }
 
         val navHost: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
-                ?: return
 
         val navController = navHost.navController
 

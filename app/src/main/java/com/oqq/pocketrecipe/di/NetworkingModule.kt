@@ -1,7 +1,6 @@
 package com.oqq.pocketrecipe.di
 
 import com.google.gson.GsonBuilder
-import com.oqq.pocketrecipe.R
 import com.oqq.pocketrecipe.data.remote.ApiService
 import org.koin.dsl.module
 import retrofit2.Retrofit

@@ -1,5 +1,6 @@
 package com.oqq.pocketrecipe.view.activity
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -26,7 +27,6 @@ class ActivityInputPage: AppCompatActivity() {
         setContentView(binding.root)
         val navHost: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
-                ?: return
         val navControll = navHost.navController
         setStatus()
         setAction(navControll)
@@ -36,6 +36,7 @@ class ActivityInputPage: AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun setThemeLogin(){
         binding.textHeader.text = "Đăng Nhập"
         binding.textLbLogin.setTextColor(Color.parseColor("#FFA500"))
@@ -46,6 +47,7 @@ class ActivityInputPage: AppCompatActivity() {
         isLogin = true
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setThemeRegister(){
         binding.textHeader.text = "Tạo Một Tài Khoản"
         binding.textLbRegister.setTextColor(Color.parseColor("#FFA500"))
@@ -55,6 +57,7 @@ class ActivityInputPage: AppCompatActivity() {
 
         isLogin = false
     }
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         if (!isLogin){

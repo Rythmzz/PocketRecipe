@@ -21,16 +21,17 @@ class RecipeRecommendAdapter(private var listRecipe:MutableList<Recipe>, private
     }
 
     inner class RecommendViewHolder(private val binding:ItemRecommendRecipeBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(item:Recipe){
             val detailItem = item.attributes
             detailItem.id = item.id
             Glide.with(itemView.context).load("${fragment.getString(R.string.url_connect)}${detailItem.imgUrl}").into(binding.imgRecipe)
-            binding.nameRecipe.setText(detailItem.name)
-            binding.mealRecipe.setText("Món: ${detailItem.meal}")
-            binding.viewRecipe.setText(detailItem.view.toString())
+            binding.nameRecipe.text = detailItem.name
+            binding.mealRecipe.text = "Món: ${detailItem.meal}"
+            binding.viewRecipe.text = detailItem.view.toString()
 
             binding.layoutRecipe.setOnClickListener {
-                val intent:Intent = Intent(itemView.context,ActivityRecipeDetailPage::class.java)
+                val intent = Intent(itemView.context,ActivityRecipeDetailPage::class.java)
                 intent.putExtra("DETAIL_RECIPE",detailItem)
                 itemView.context.startActivity(intent)
             }
@@ -44,8 +45,8 @@ class RecipeRecommendAdapter(private var listRecipe:MutableList<Recipe>, private
     }
 
     override fun getItemCount(): Int {
-        if (listRecipe.size < 8) return listRecipe.size
-        else return 8
+        return if (listRecipe.size < 8) listRecipe.size
+        else 8
     }
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {

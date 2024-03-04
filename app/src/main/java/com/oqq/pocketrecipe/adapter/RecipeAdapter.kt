@@ -11,9 +11,8 @@ import com.oqq.pocketrecipe.R
 import com.oqq.pocketrecipe.data.model.recipe.Recipe
 import com.oqq.pocketrecipe.databinding.SearchRecipeItemBinding
 import com.oqq.pocketrecipe.view.activity.ActivityRecipeDetailPage
-import com.oqq.pocketrecipe.view.viewmodel.RecipeViewModel
 
-class RecipeAdapter(private var listRecipe:MutableList<Recipe>, private val fragment:Fragment, private val recipeViewModel: RecipeViewModel): RecyclerView.Adapter<RecipeAdapter.SearchViewHolder>() {
+class RecipeAdapter(private var listRecipe:MutableList<Recipe>, private val fragment:Fragment): RecyclerView.Adapter<RecipeAdapter.SearchViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun refreshData(newRecipes:MutableList<Recipe>){
@@ -22,18 +21,19 @@ class RecipeAdapter(private var listRecipe:MutableList<Recipe>, private val frag
     }
 
     inner class SearchViewHolder(private val binding:SearchRecipeItemBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(item:Recipe){
             val detailItem = item.attributes
             detailItem.id = item.id
             Glide.with(itemView.context).load("${fragment.getString(R.string.url_connect)}${detailItem.imgUrl}").into(binding.imageRecipe)
-            binding.nameRecipe.setText(detailItem.name)
-            binding.countRecipe.setText("${detailItem.count.toString()}")
-            binding.timeRecipe.setText("${detailItem.duration} Phút")
-            binding.kcalRecipe.setText("${detailItem.kcal} Kcal")
+            binding.nameRecipe.text = detailItem.name
+            binding.countRecipe.text = detailItem.count.toString()
+            binding.timeRecipe.text = "${detailItem.duration} Phút"
+            binding.kcalRecipe.text = "${detailItem.kcal} Kcal"
 
             binding.layoutRecipe.setOnClickListener {
 
-                val intent:Intent = Intent(itemView.context,ActivityRecipeDetailPage::class.java)
+                val intent = Intent(itemView.context,ActivityRecipeDetailPage::class.java)
                 intent.putExtra("DETAIL_RECIPE",detailItem)
                 itemView.context.startActivity(intent)
             }

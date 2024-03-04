@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -22,24 +23,28 @@ class RecipeFavoriteAdapter(private var listRecipe:MutableList<AttributesRecipe>
     }
 
     inner class SearchViewHolder(private val binding:ItemFavoriteRecipeBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(item:AttributesRecipe){
-            val detailItem = item
-            Glide.with(itemView.context).load("${fragment.getString(R.string.url_connect)}${detailItem.imgUrl}").into(binding.imageRecipe)
-            binding.nameRecipe.setText(detailItem.name)
-            binding.countRecipe.setText("${detailItem.count.toString()}")
-            binding.timeRecipe.setText("${detailItem.duration} Phút")
-            binding.kcalRecipe.setText("${detailItem.kcal} Kcal")
+            Glide.with(itemView.context).load("${fragment.getString(R.string.url_connect)}${item.imgUrl}").into(binding.imageRecipe)
+            binding.nameRecipe.text = item.name
+            binding.countRecipe.text = item.count.toString()
+            binding.timeRecipe.text = "${item.duration} Phút"
+            binding.kcalRecipe.text = "${item.kcal} Kcal"
 
             binding.favoriteRecipe.setOnClickListener {
                 val infoUser = loginViewModel.detailUser!!
                 if (infoUser.recipes.contains(item)){
                     infoUser.recipes.remove(item)
+                    Toast.makeText(itemView.context,"Đã loại bỏ công thức khỏi danh sách yêu thích của bạn!",Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    Toast.makeText(itemView.context,"Đã thêm công thức vào danh sách yêu thích của bạn!",Toast.LENGTH_SHORT).show()
                 }
                 loginViewModel.updateUser(infoUser.id,infoUser)
             }
             binding.layoutRecipe.setOnClickListener {
-                val intent:Intent = Intent(itemView.context,ActivityRecipeDetailPage::class.java)
-                intent.putExtra("DETAIL_RECIPE",detailItem)
+                val intent = Intent(itemView.context,ActivityRecipeDetailPage::class.java)
+                intent.putExtra("DETAIL_RECIPE", item)
                 itemView.context.startActivity(intent)
             }
 

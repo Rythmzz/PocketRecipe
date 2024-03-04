@@ -7,7 +7,7 @@
     >
 
     <fragment android:id="@+id/fragment_recipe_search_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRecipeSearchPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentRecipeSearchPage"
         tools:layout="@layout/fragment_recipe_search_page">
         <action
             android:id="@+id/action_fragment_home_dest_to_fragment_recipe_search_dest"
@@ -17,7 +17,7 @@
 
     <fragment android:id="@+id/fragment_home_dest"
         tools:layout="@layout/fragment_home_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentHomePage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentHomePage">
         <action
             android:id="@+id/action_fragment_home_dest_to_fragment_recipe_search_dest"
             app:destination="@id/fragment_recipe_search_dest" />
@@ -37,7 +37,7 @@
 
     <fragment android:id="@+id/fragment_menu_dest"
         tools:layout="@layout/fragment_menu_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentMenuPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentMenuPage">
         <action
             android:id="@+id/action_fragment_menu_dest_to_fragment_menu_search_dest"
             app:destination="@id/fragment_menu_search_dest" />
@@ -48,7 +48,7 @@
 
     <fragment android:id="@+id/fragment_menu_search_dest"
         tools:layout="@layout/fragment_menu_search_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentMenuSearchPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentMenuSearchPage">
         <action
             android:id="@+id/action_fragment_menu_dest_to_fragment_menu_search_dest"
             app:popUpTo="@id/fragment_menu_dest" />
@@ -57,7 +57,7 @@
 
     <fragment android:id="@+id/fragment_profile_dest"
         tools:layout="@layout/fragment_profile_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentProfilePage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentProfilePage">
         <action
             android:id="@+id/action_fragment_profile_dest_to_fragment_profile_detail_dest"
             app:destination="@id/fragment_profile_detail_dest" />
@@ -74,7 +74,7 @@
     </fragment>
     <fragment android:id="@+id/fragment_add_recipe_detail_dest"
         tools:layout="@layout/fragment_add_recipe_detail_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentAddRecipeDetailPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentAddRecipeDetailPage">
 
         <action
             android:id="@+id/action_fragment_home_dest_to_fragment_add_recipe_detail_dest"
@@ -86,7 +86,7 @@
 
     <fragment android:id="@+id/fragment_recipe_all_dest"
         tools:layout="@layout/fragment_recipe_all_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRecipeAllPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentRecipeAllPage">
         <action
             android:id="@+id/action_fragment_home_dest_to_fragment_recipe_all_dest"
             app:popUpTo="@id/fragment_home_dest" />
@@ -106,7 +106,7 @@
 
     <fragment android:id="@+id/fragment_recipe_healthy_page"
         tools:layout="@layout/fragment_recipe_healthy_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRecipeHealthyPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentRecipeHealthyPage">
 
         <action
             android:id="@+id/action_fragment_home_dest_to_fragment_recipe_healthy_page"
@@ -115,7 +115,7 @@
 
     <fragment android:id="@+id/fragment_recipe_all_detail_dest"
         tools:layout="@layout/fragment_recipe_all_detail_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentRecipeAllDetailPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentRecipeAllDetailPage">
         <action
             android:id="@+id/action_fragment_recipe_all_dest_to_fragment_recipe_all_detail_dest"
             app:popUpTo="@id/fragment_recipe_all_dest"/>
@@ -128,7 +128,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_menu_restaurant_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentMenuRestaurantPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.other.FragmentMenuRestaurantPage"
         tools:layout="@layout/fragment_menu_restaurant_page">
         <action
             android:id="@+id/action_fragment_menu_dest_to_fragment_menu_restaurant_dest"
@@ -140,7 +140,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_profile_detail_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentProfileDetailPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentProfileDetailPage"
         tools:layout="@layout/fragment_profile_detail_page">
         <action
             android:id="@+id/action_fragment_profile_dest_to_fragment_profile_detail_dest"
@@ -149,7 +149,7 @@
     </fragment>
     <fragment android:id="@+id/fragment_category_recipe_dest"
         tools:layout="@layout/fragment_category_recipe_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentCategoryRecipePage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentCategoryRecipePage">
         <action
             android:id="@+id/action_fragment_home_dest_to_fragment_category_recipe_dest"
             app:popUpTo="@id/fragment_home_dest" />
@@ -164,7 +164,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_my_recipe_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentMyRecipePage"
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentMyRecipePage"
         tools:layout="@layout/fragment_my_recipe_page">
         <action android:id="@+id/action_back_home"
             app:popUpTo="@id/fragment_home_dest"/>
@@ -172,7 +172,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_my_favorite_recipe_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentMyFavoriteRecipePage"
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentMyFavoriteRecipePage"
         tools:layout="@layout/fragment_my_favorite_recipe_page">
         <action android:id="@+id/action_back_home"
             app:popUpTo="@id/fragment_home_dest"/>
@@ -183,13 +183,13 @@
 
     <fragment android:id="@+id/fragment_my_favorite_menu_dest"
         tools:layout="@layout/fragment_my_favorite_menu_page"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentMyFavoriteMenuPage">
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentMyFavoriteMenuPage">
         <action android:id="@+id/action_back_home"
             app:popUpTo="@id/fragment_home_dest"/>
     </fragment>
 
     <fragment android:id="@+id/fragment_food_detail_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentFoodDetailPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentFoodDetailPage"
         tools:layout="@layout/fragment_food_detail_page"
         >
         <action
@@ -199,7 +199,7 @@
     </fragment>
 
     <fragment android:id="@+id/fragment_info_dest"
-        android:name="com.oqq.pocketrecipe.view.fragment.FragmentInfoPage"
+        android:name="com.oqq.pocketrecipe.view.fragment.main.FragmentInfoPage"
         tools:layout="@layout/fragment_info_page">
         <argument android:name="title"
             app:argType="string"

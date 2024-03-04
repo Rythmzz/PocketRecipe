@@ -1,6 +1,5 @@
 package com.oqq.pocketrecipe.data.model.recipe
 
-import com.oqq.pocketrecipe.data.model.client.UserAttribute
 import com.oqq.pocketrecipe.data.model.client.UserRequest
 
 data class AttributesRecipe(
@@ -15,5 +14,4 @@ var view:Int?, val meal:String?,
 val imgUrl:String?,
 val ingredients:List<String>?,
 val process:List<Process>?,
-val userslike:UserRequest?):java.io.Serializable {
-}
+val userslike:UserRequest?):java.io.Serializable

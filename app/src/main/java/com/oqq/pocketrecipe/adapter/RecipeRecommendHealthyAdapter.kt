@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -44,10 +45,15 @@ class RecipeRecommendHealthyAdapter(private var listRecipe:MutableList<Recipe>, 
                 if (infoUser.recipes.contains(detailItem)){
                     infoUser.recipes.remove(detailItem)
                     binding.favoriteRecipe.setImageResource(R.drawable.ic_heart_02)
+                    Toast.makeText(itemView.context,"Đã loại bỏ công thức khỏi danh sách yêu thích của bạn!",Toast.LENGTH_SHORT).show()
+
                 }
                 else {
                     infoUser.recipes.add(detailItem)
                     binding.favoriteRecipe.setImageResource(R.drawable.ic_heart_01)
+                    Toast.makeText(itemView.context,"Đã thêm công thức vào danh sách yêu thích của bạn!",
+                        Toast.LENGTH_SHORT).show()
+
 
                 }
                 loginViewModel.updateUser(infoUser.id,infoUser)

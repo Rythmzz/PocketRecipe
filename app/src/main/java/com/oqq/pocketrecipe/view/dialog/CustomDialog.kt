@@ -7,7 +7,7 @@ import android.view.Window
 import com.oqq.pocketrecipe.listener.DialogResultListener
 import com.oqq.pocketrecipe.databinding.CustomDialogBinding
 
-class CustomDialog(context:Context, private val dialogResultListener: DialogResultListener, val title:String, val body:String) : Dialog(context) {
+class CustomDialog(context:Context, private val dialogResultListener: DialogResultListener, val title:String, private val body:String) : Dialog(context) {
     init {
         setCancelable(false)
     }
@@ -23,8 +23,8 @@ class CustomDialog(context:Context, private val dialogResultListener: DialogResu
     }
 
     private fun setIntialData() {
-        binding.tvTitle.setText(title)
-        binding.tvBody.setText(body)
+        binding.tvTitle.text = title
+        binding.tvBody.text = body
     }
 
     private fun setBehavior() {

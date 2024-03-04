@@ -6,14 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.oqq.pocketrecipe.R
-import com.oqq.pocketrecipe.data.model.FeatureSlide
+import com.oqq.pocketrecipe.data.model.other.FeatureSlide
 import com.oqq.pocketrecipe.databinding.ImageFeatureItemBinding
 import com.smarteist.autoimageslider.SliderViewAdapter
 
 class SliderFeatureAdapter(private val navOptions: NavOptions, private val fragment:Fragment, private var listFeature:MutableList<FeatureSlide>): SliderViewAdapter<SliderFeatureAdapter.SliderAdapterAddImage>() {
-    inner class SliderAdapterAddImage(private val binding: ImageFeatureItemBinding):SliderViewAdapter.ViewHolder(binding.root){
-        fun bind(item:FeatureSlide, position:Int){
-            binding.title.setText(item.title)
+    inner class SliderAdapterAddImage(private val binding: ImageFeatureItemBinding):ViewHolder(binding.root){
+        fun bind(item: FeatureSlide, position:Int){
+            binding.title.text = item.title
             binding.thumnailLayout.setBackgroundResource(item.image)
             binding.btnInteract.setOnClickListener {
                if (position == 0){
