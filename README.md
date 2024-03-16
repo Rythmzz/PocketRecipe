@@ -27,7 +27,7 @@
    - User profile editing feature
    - Add new cooking recipe feature
 # DEMO 
-   - [**FUll CLIP DEMO**]([https://www.youtube.com/watch?v=4asqiFd_wss](https://www.youtube.com/watch?v=p85hTh1d0nw)https://www.youtube.com/watch?v=p85hTh1d0nw)
+   - [**FUll CLIP DEMO**](https://www.youtube.com/watch?v=4asqiFd_wss)
 
 
 
