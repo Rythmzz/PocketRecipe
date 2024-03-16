@@ -27,9 +27,7 @@
    - User profile editing feature
    - Add new cooking recipe feature
 # DEMO 
-   - UI HOME: ![image](https://github.com/Rythmzz/PocketRecipe/assets/101648696/e5effbf0-7dd9-47b7-9b7a-23bc1b8836e6)
-   - UI FAVORITE: ![image](https://github.com/Rythmzz/PocketRecipe/assets/101648696/9aba4868-9569-44e9-8d42-fa150193119e)
-   - [**FUll CLIP DEMO**](https://www.youtube.com/watch?v=4asqiFd_wss)
+   - [**FUll CLIP DEMO**]([https://www.youtube.com/watch?v=4asqiFd_wss](https://www.youtube.com/watch?v=p85hTh1d0nw)https://www.youtube.com/watch?v=p85hTh1d0nw)
 
 
 
